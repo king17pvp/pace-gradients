@@ -16,7 +16,7 @@ pip install -r requirements.txt
 * Secondly, run evaluation of `PACE gradient` for BERT on sentiment classification on a selected dataset with the following command:
 
 ```bash
-python run_eval_pg_sentiment_analysis --model [Model name] --dataset [dataset name]
+python run_eval_pg_sentiment_analysis.py --model [Model name] --dataset [dataset name]
 ```
 
 Where 
@@ -26,12 +26,12 @@ Where
 
 Example command:
 ```bash
-python run_eval_pg_sentiment_analysis --model distilbert --dataset rotten
+python run_eval_pg_sentiment_analysis.py --model distilbert --dataset rotten
 ```
 
 Addtionally to run evaluation for QA Task For BERT model using the scheme introduced by [Uniform Discretized Integrated Gradients](https://arxiv.org/abs/2412.03886) using PACE Gradient, you can use the following commands:
 
 Example command:
 ```bash
-python run_eval_pg_qa
+python run_eval_pg_qa.py
 ```
