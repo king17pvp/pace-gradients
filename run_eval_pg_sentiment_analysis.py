@@ -27,11 +27,10 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--model', type=str, default='distilbert', help='Model name or path')
     parser.add_argument('--dataset', choices=['sst2', 'imdb', 'rotten'])
-    parser.add_argument('--range', type=float, nargs=2, default=[0.0, 1.0], help='Range [a,b] for epsilon')
     parser.add_argument('--steps', type=int, default=100, help='Number of steps for Riemann sum')
 
     args = parser.parse_args()
-    a, b = args.range
+    a, b = 0, 1
     steps = args.steps
     model = args.model
     dataset_name = args.dataset

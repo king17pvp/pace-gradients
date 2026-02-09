@@ -1,14 +1,10 @@
 import os, sys, numpy as np, pickle, random
-import monotonic_paths
 
 import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from tqdm import tqdm
-from dig import DiscretetizedIntegratedGradients
-from attributions import run_dig_explanation
 from xai_metrics import calculate_log_odds, calculate_comprehensiveness, calculate_sufficiency
 from captum.attr._utils.common import _reshape_and_sum, _validate_input
-from sklearn.neighbors import kneighbors_graph
 
 def predict(model, inputs_embeds, attention_mask=None):
     return model(inputs_embeds=inputs_embeds, attention_mask=attention_mask)[0]
@@ -21,13 +17,6 @@ def nn_forward_func(model, input_embed, attention_mask=None, position_embed=None
         return pred
     else:
         return pred.max(1).values
-
-def load_mappings(dataset, knn_nbrs=500):
-    with open(f'knn/bert_{dataset}_{knn_nbrs}.pkl', 'rb') as f:
-        [word_idx_map, word_features, adj] = pickle.load(f)
-    word_idx_map	= dict(word_idx_map)
-
-    return word_idx_map, word_features, adj
 
 def construct_input_ref_pair(tokenizer, text, ref_token_id, sep_token_id, cls_token_id, device):
 	text_ids		= tokenizer.encode(text, add_special_tokens=False, truncation=True,max_length=tokenizer.max_len_single_sentence)

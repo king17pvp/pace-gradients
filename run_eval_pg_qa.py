@@ -129,7 +129,6 @@ def run_benchmark(args):
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print(f"Using device: {device}")
     print(f"Model: {args.model_name}")
-    print(f"Integration range: [{args.range[0]}, {args.range[1]}] with {args.steps} steps")
     print(f"Number of samples: {args.num_samples}")
     print(f"Top-k percentage for metrics: {args.topk}%")
 
@@ -171,7 +170,7 @@ def run_benchmark(args):
     count = 0
     errors = 0
     
-    a, b = args.range
+    a, b = 0, 1
     
     for idx, example in enumerate(tqdm(sampled_data)):
         context = example["context"]
@@ -245,13 +244,6 @@ if __name__ == "__main__":
         type=str,
         default='squad',
         help='Dataset name from HuggingFace datasets (default: squad)'
-    )
-    parser.add_argument(
-        '--range', 
-        type=float, 
-        nargs=2, 
-        default=[0.0, 1.0],
-        help='Range [a, b] for epsilon interpolation'
     )
     parser.add_argument(
         '--steps', 
