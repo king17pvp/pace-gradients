@@ -1,4 +1,4 @@
-# How to install and run evaluation for Gated Gradient
+# How to install and run evaluation for PACE Gradient
 
 * First, create a python environment (preferrably through `conda`) and install necessary requirements
 
@@ -21,7 +21,7 @@ Where
 
 Example command:
 ```bash
-python run_evaluation_gg --model distilbert --dataset rotten --range 0 1
+python run_eval_pg_sentiment_analysis --model distilbert --dataset rotten --range 0 1
 ```
 
 Addtionally to run evaluation for QA Task For BERT model using the scheme introduced by [Uniform Discretized Integrated Gradients](https://arxiv.org/abs/2412.03886) using PACE Gradient, you can use the following commands:
