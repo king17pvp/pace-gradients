@@ -1,3 +1,8 @@
+# This repository provide implementation of PACE Gradients: Prediction-Aware Consistency-Enhanced Gated Gradient Attribution 
+
+## Overview Diagram
+![PACE Diagram](assets/PACE.png)
+
 # How to install and run evaluation for PACE Gradient
 
 * First, create a python environment (preferrably through `conda`) and install necessary requirements
